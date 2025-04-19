@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+  width: 100%;
+  height: 100%;
+  color: white;
+  overflow-x: hidden;
+
+}
+
+.landing {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.background-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  transition: opacity 0.2s ease-out;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 0;
+}
+
+.nav-wrapper {
+  width: 100%;
+  padding: 0 40px;
+  position: absolute;
+  font-family: 'Playfair Display', serif;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.login-button {
+  background: transparent;
+  border: none;
+  color: #ffffff; /* white text to match overlay/video */
+  font-size: 1rem;
+  /* fancy font vibe */
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.login-button:hover {
+  opacity: 0.7;
+}
+
+.hero-content {
+  z-index: 1;
+  text-align: center;
+  position: absolute; /* fix this line */
+  top: 60%; /* push it a bit lower than center */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding-top: 0;  /* no need since we're using top % */
+
+}
+
+.hero-content h2 {
+  font-size: 3rem;
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 20px;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+section {
+  padding: 80px 40px;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.collection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.collection-text {
+  flex: 1;
+  min-width: 300px;
+}
+
+.collection-text h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.collection-text p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+.collection-img {
+  flex: 1;
+  min-width: 300px;
+}
+
+.collection-img img {
+  width: 100%;
+  max-height: 500px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+footer {
+  padding: 40px;
+  background: #111;
+  color: #ccc;
+  text-align: center;
+}
