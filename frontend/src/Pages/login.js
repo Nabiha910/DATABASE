@@ -1,87 +1,114 @@
-import React, { useState } from 'react';
-import { GoogleLogin } from '@react-oauth/google';
+import React, { useState } from "react";
+import { GoogleLogin } from "@react-oauth/google";
+import "./login.css";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
   const [user, setUser] = useState(null);
+  const [formData, setFormData] = useState({ username: "", password: "" });
+  const navigate = useNavigate();
+
+  // Static Admin credentials
+  const adminEmail = "nabiha";
+  const adminPassword = "password123";
 
   const handleLoginSuccess = (response) => {
-    // Handle successful login here
     const userObj = {
-      name: response?.credential?.name,
-      email: response?.credential?.email,
+      name: "Google User",
+      email: "user@gmail.com", // Note: response.credential doesn't give full profile by default
     };
+
     setUser(userObj);
-    console.log('User Data:', userObj);
+    localStorage.setItem("loggedInUser", JSON.stringify(userObj));
+    navigate("/women"); // redirect after login
   };
 
   const handleLoginFailure = (error) => {
-    console.log('Login Failed:', error);
+    console.log("Login Failed:", error);
+  };
+
+  const handleChange = (e) => {
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleManualLogin = (e) => {
+    e.preventDefault();
+
+    // Hardcoded admin login check
+    if (
+      formData.username === adminEmail &&
+      formData.password === adminPassword
+    ) {
+      const userObj = {
+        name: "Admin Nabiha",
+        email: adminEmail,
+        isAdmin: true,
+      };
+
+      setUser(userObj);
+      localStorage.setItem("loggedInUser", JSON.stringify(userObj));
+      navigate("/Admin"); // Redirect to admin page
+    } else {
+      alert("Invalid credentials ❌");
+    }
+  };
+
+  const backgroundStyle = {
+    backgroundImage: `url(${process.env.PUBLIC_URL + "/images/c1.jpeg"})`,
   };
 
   return (
-    <div style={styles.container}>
-      <h2>Login to Your Account</h2>
+    <div className="page-wrapper">
+      <div className="background-image" style={backgroundStyle} />
 
-      {/* Google login button */}
-      <GoogleLogin
-        onSuccess={handleLoginSuccess}
-        onError={handleLoginFailure}
-        useOneTap
-      />
+      <div className="bubbles">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
 
-      <p>OR</p>
+      <div className="login-box">
+        <h2>Login to Your Account</h2>
 
-      {/* Regular login form */}
-      <form onSubmit={(e) => e.preventDefault()}>
-        <input type="text" placeholder="Username" required style={styles.input} /><br /><br />
-        <input type="password" placeholder="Password" required style={styles.input} /><br /><br />
-        <button type="submit" style={styles.button}>Login</button>
-      </form>
+        <GoogleLogin
+          onSuccess={handleLoginSuccess}
+          onError={handleLoginFailure}
+        />
 
-      {user && (
-        <div style={styles.userInfo}>
-          <h3>Logged in as:</h3>
-          <p>Name: {user.name}</p>
-          <p>Email: {user.email}</p>
-        </div>
-      )}
+        <p>OR</p>
+
+        <form onSubmit={handleManualLogin}>
+          <input
+            type="text"
+            name="username"
+            placeholder="Username (Admin: nabiha)"
+            value={formData.username}
+            onChange={handleChange}
+            required
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="Password (Admin: password123)"
+            value={formData.password}
+            onChange={handleChange}
+            required
+          />
+          <button type="submit">Login</button>
+        </form>
+
+        {user && (
+          <div className="user-info">
+            <h3>Logged in as:</h3>
+            <p>Name: {user.name}</p>
+            <p>Email: {user.email}</p>
+          </div>
+        )}
+      </div>
     </div>
   );
-};
-
-const styles = {
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: '20px',
-    backgroundColor: '#fff',
-    borderRadius: '8px',
-    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-    width: '300px',
-    margin: '0 auto',
-  },
-  input: {
-    padding: '10px',
-    margin: '10px 0',
-    width: '100%',
-    border: '1px solid #ccc',
-    borderRadius: '4px',
-  },
-  button: {
-    padding: '10px',
-    backgroundColor: '#4CAF50',
-    color: '#fff',
-    border: 'none',
-    borderRadius: '4px',
-    cursor: 'pointer',
-    width: '100%',
-  },
-  userInfo: {
-    marginTop: '20px',
-    textAlign: 'center',
-  },
 };
 
 export default LoginPage;

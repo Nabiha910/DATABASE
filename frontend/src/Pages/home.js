@@ -41,23 +41,27 @@ const App = () => {
           </p>
         </div>
       </div>
+{/* Women Section */}
+<section id="women">
+  <div className="collection">
+    <div className="collection-text">
+      <h2>Women Collection</h2>
+      <p>
+        Step into a world of sophistication and charm. Our women's
+        perfume line is designed to captivate and inspire, blending
+        timeless elegance with modern allure.
+      </p>
+      
+      <Link to="/women" className="shop-now-btn">Shop Now</Link>
 
-      {/* Women Section */}
-      <section id="women">
-        <div className="collection">
-          <div className="collection-text">
-            <h2>Women Collection</h2>
-            <p>
-              Step into a world of sophistication and charm. Our women's
-              perfume line is designed to captivate and inspire, blending
-              timeless elegance with modern allure.
-            </p>
-          </div>
-          <div className="collection-img">
-            <img src="/images/i14.jpg" alt="Women's Perfume" />
-          </div>
-        </div>
-      </section>
+    </div>
+
+    <div className="collection-img">
+      <img src="/images/i12.jpg" alt="Women's Perfume" />
+    </div>
+  </div>
+</section>
+
 
       {/* Men Section */}
       <section id="men">
@@ -71,7 +75,7 @@ const App = () => {
             </p>
           </div>
           <div className="collection-img">
-            <img src="/images/i14.jpg" alt="Men's Perfume" />
+            <img src="/images/i18.jpg" alt="Men's Perfume" />
           </div>
         </div>
       </section>

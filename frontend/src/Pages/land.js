@@ -19,7 +19,7 @@ const AllurePage = () => {
     <div className="landing">
       {/* Background Video */}
       <video className="video-background" autoPlay muted loop>
-        <source src="/videos/v3.mp4" type="video/mp4" />
+        <source src="/videos/v4.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 

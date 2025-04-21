@@ -1,0 +1,87 @@
+/* all the CSS from your <style> tag goes here */
+* {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #eae8ed;
+  }
+  header {
+    background-color: #eae8ed;
+    padding: 20px;
+    text-align: center;
+    color: rgb(63, 24, 84);
+  }
+  header h1 {
+    margin: 0;
+    font-family: "Times New Roman", Times, serif;
+    margin-top: 7px;
+  }
+  .filter-bar {
+    width: 80%;
+    margin: 20px auto;
+    text-align: right;
+  }
+  select {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  .container {
+    width: 80%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding-bottom: 40px;
+  }
+  .product-card {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+  .product-card img {
+    max-width: 100%;
+    border-radius: 10px;
+    height: 250px;
+    object-fit: cover;
+  }
+  .product-card h3 {
+    margin: 10px 0;
+    font-family: "Lucida Console", "Courier New", cursive;
+    color:#eae8ed
+  }
+  .product-card p {
+    font-size: 14px;
+    color: #666;
+  }
+  .price {
+    font-weight: bold;
+    margin: 10px 0;
+    color: #333;
+  }
+  .button {
+    background-color: #514675;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .button:hover {
+    background-color: #ac9ce1;
+  }
+  .cart {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color:#514675;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  

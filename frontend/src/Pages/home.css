@@ -30,7 +30,7 @@ body, html {
   height: 100%;
   object-fit: cover;
   z-index: -1;
-  transition: opacity 0.2s ease-out;
+  transition: opacity 0.1s ease-out;
 }
 
 .overlay {
@@ -39,7 +39,7 @@ body, html {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.1);
   z-index: 0;
 }
 
@@ -149,4 +149,24 @@ footer {
   background: #111;
   color: #ccc;
   text-align: center;
+}
+.shop-now-btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 30px;
+  background-color: #fff;
+  color: #514675;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 25px;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.shop-now-btn:hover {
+  background-color: #ac9ce1;
+  color: #fff;
 }
