@@ -1,19 +1,30 @@
 const express = require('express');
 const app = express();
-const PORT = 5000;
+const db = require('./DbSetup/MySqlConnection');
+const PerfumeRoutes = require('./routes/PerfumeRoutes')
+const UserRoutes = require('./routes/UserRoutes');
+const OrdersRoutes = require('./routes/OrdersRoutes');
+const ReviewRoutes = require('./routes/ReviewRoutes');
+const CartItemRoutes = require('./routes/CartItemRoutes');
 
-const cors = require('cors');
-app.use(cors());
-app.use(express.json());
+app.use(express.json()); // Parse JSON bodies
 
-app.get('/api/hello', (req, res) => {
-  res.send({ message: "Hi from backend!" });
+app.get('/', (req, res) => {
+  res.send('Hello, World!');
 });
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// Perfume routes
+app.use('/api/perfumes', PerfumeRoutes);
+//User routes
+app.use('/api/users', UserRoutes);
+// Order routes
+app.use('/api/orders', OrdersRoutes);
+// Review routes
+app.use('/api/reviews', ReviewRoutes);
+// cart_item routes
+app.use('/api/cart_items', CartItemRoutes);
 
-const mongoose = require('mongoose');
-
-mongoose.connect('mongodb+srv://tumharaURL') // replace with real URL
-  .then(() => console.log('MongoDB connected'))
-  .catch(err => console.log(err));
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
